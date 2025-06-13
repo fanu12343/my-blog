@@ -1,0 +1,36 @@
+{% extends "base.html" %}
+{% load static %}
+
+ <title>{% block title%}  
+    MY PROJECTS
+    {% endblock %} </title>
+
+    {% block css_styles %} 
+    <link rel="stylesheet" href="{% static 'blog/travel.css' %}">
+  {%endblock%}
+
+
+
+  {% block content%}
+    <a href="{% url 'starting-page' %}" class="home">Home</a>
+
+  <header>
+        <h1>My travels</h1>
+        <p>Here are some of the projects I’ve worked on recently.</p>
+    </header>
+
+    <section class="projects-grid">
+        <div class="project-card">
+            <h2>Salon App with Face Recognition</h2>
+            <p>An AI-powered app for online salon bookings using Flutter and Firebase.</p>
+        </div>
+        <div class="project-card">
+            <h2>Football Data Analysis</h2>
+            <p>Python-based football match insights with data visualization and predictive analysis.</p>
+        </div>
+        <div class="project-card">
+            <h2>Portfolio Website</h2>
+            <p>This personal blog made with Django, HTML, CSS, and Python.</p>
+        </div>
+    </section>
+{%endblock%}

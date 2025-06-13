@@ -1,0 +1,10 @@
+{
+    "window.zoomLevel": 6,
+    "python.languageServer": "Pylance",
+    "files.associations": {
+        "**/*.html": "html",
+        "**/templates/**/*.html":"django-html",
+        "**/requirements{/**,*},{txt,in}": "pip-requirements"
+    },
+    "emmet.includeLanguages": {"django-html": "html"}
+}

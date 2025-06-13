@@ -1,0 +1,63 @@
+{% extends "base.html" %}
+{% load static %}
+
+  <title>{% block title%}  
+    Welcome | My Portfolio Blog
+    {% endblock %} </title>
+
+    {% block css_styles %} 
+    <link rel="stylesheet" href="{% static 'blog/index.css' %}">
+  {%endblock%}
+
+   {% block content%}
+
+   <div class="hero">
+    
+<img src="{% static 'blog/images/myPhoto.jpeg' %}" alt="My Photo" class="zoom-img">
+    <h1>Welcome to My Personal Blog</h1>
+    <p>Hello! I'm Fahad, a passionate developer, sports enthusiast, and tech learner. This blog is where I share my journey, projects, and achievements.</p>
+  </div>
+
+
+
+  <a href="{% url 'projects' %}" class="card project-card">
+  <div class="card-image" style="background-image: url('{% static 'blog/images/img.jpg' %}');">
+    <div class="overlay"></div>
+    <div class="card-text">
+      <h3>My Projects</h3>
+      <p>Applications built with Django, Flutter, and AI. Click to explore!</p>
+    </div>
+  </div>
+</a>
+
+   
+  <a href="{% url 'sports' %}" class="card project-card">
+  <div class="card-image" style="background-image: url('{% static 'blog/images/img.jpg' %}');">
+    <div class="overlay"></div>
+    <div class="card-text">
+      <h3>Sports achievements.</h3>
+      <p>Represented my college in multiple sports events. Check them out</p>
+    </div>
+  </div>
+</a>
+
+    <a href="{% url 'travel' %}" class="card project-card">
+  <div class="card-image" style="background-image: url('{% static 'blog/images/img.jpg' %}');">
+    <div class="overlay"></div>
+    <div class="card-text">
+      <h3>Journeys I've Taken.</h3>
+        <p>Each destination has left a mark — here’s a look into my travel life.
+
+.</p>
+    </div>
+  </div>
+</a>
+</div>
+ <footer>
+    &copy; 2025 | Crafted with ❤️ by Fahad
+  </footer>
+
+    {% endblock %} 
+  
+
+    
