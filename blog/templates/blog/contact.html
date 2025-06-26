@@ -1,0 +1,37 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}Contact me{% endblock %}
+
+{% block css_styles %} 
+<link rel="stylesheet" href="{% static 'blog/contact.css' %}">
+{% endblock %}
+
+{% block content %}
+
+
+<header class="site-header">
+  <div class="logo">
+    <h1 class="heading">FAHAD VB</h1>
+    <p class="subheading">FANU</p>
+    <div class='underline'></div>
+  </div>
+ 
+
+<a href = "{% url 'home' %}">Home </a>
+<div class="contact-wrapper">
+  <h1>Contact Me</h1>
+
+  {% if submitted %}
+    <p class="success-message">Thank you for contacting me! I’ll get back to you soon.</p>
+  {% else %}
+    <form method="post" class="contact-form">
+      {% csrf_token %}
+      {{ form.as_p }}
+      <button type="submit" class="send-button">Send</button>
+    </form>
+  {% endif %}
+</div>
+{% endblock %}
+
+

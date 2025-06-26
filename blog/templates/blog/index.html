@@ -1,63 +1,101 @@
 {% extends "base.html" %}
 {% load static %}
 
-  <title>{% block title%}  
-    Welcome | My Portfolio Blog
-    {% endblock %} </title>
+{% block title %}Welcome | My Portfolio Blog{% endblock %}
 
-    {% block css_styles %} 
-    <link rel="stylesheet" href="{% static 'blog/index.css' %}">
-  {%endblock%}
+{% block css_styles %} 
+<link rel="stylesheet" href="{% static 'blog/index.css' %}">
+{% endblock %}
 
-   {% block content%}
+{% block content %}
 
-   <div class="hero">
-    
-<img src="{% static 'blog/images/myPhoto.jpeg' %}" alt="My Photo" class="zoom-img">
-    <h1>Welcome to My Personal Blog</h1>
-    <p>Hello! I'm Fahad, a passionate developer, sports enthusiast, and tech learner. This blog is where I share my journey, projects, and achievements.</p>
+
+<header class="site-header">
+  <div class="logo">
+    <h1 class="heading">FAHAD VB</h1>
+    <p class="subheading">FANU</p>
+    <div class='underline'></div>
   </div>
-
-
-
-  <a href="{% url 'projects' %}" class="card project-card">
-  <div class="card-image" style="background-image: url('{% static 'blog/images/img.jpg' %}');">
-    <div class="overlay"></div>
-    <div class="card-text">
-      <h3>My Projects</h3>
-      <p>Applications built with Django, Flutter, and AI. Click to explore!</p>
-    </div>
-  </div>
-</a>
-
-   
-  <a href="{% url 'sports' %}" class="card project-card">
-  <div class="card-image" style="background-image: url('{% static 'blog/images/img.jpg' %}');">
-    <div class="overlay"></div>
-    <div class="card-text">
-      <h3>Sports achievements.</h3>
-      <p>Represented my college in multiple sports events. Check them out</p>
-    </div>
-  </div>
-</a>
-
-    <a href="{% url 'travel' %}" class="card project-card">
-  <div class="card-image" style="background-image: url('{% static 'blog/images/img.jpg' %}');">
-    <div class="overlay"></div>
-    <div class="card-text">
-      <h3>Journeys I've Taken.</h3>
-        <p>Each destination has left a mark — here’s a look into my travel life.
-
-.</p>
-    </div>
-  </div>
-</a>
+  <!-- Hamburger icon -->
+<div class="hamburger" onclick="toggleMenu()">
+  ☰
 </div>
- <footer>
-    &copy; 2025 | Crafted with ❤️ by Fahad
-  </footer>
 
-    {% endblock %} 
-  
+<!-- Overlay menu -->
+<div id="overlayMenu" class="overlay">
+  <div class="overlay-content">
+    <span class="close-btn" onclick="toggleMenu()">&times;</span>
+        <img class="head" src="static/blog/images/myPhoto.jpeg" alt="My photo">
 
-    
+    <p>Hi, I'm Fahad — a recent B.Tech graduate in Computer Science Engineering from Thejus Engineering College. I'm excited to share a glimpse of my journey, including some of the projects I've built, the achievements I've earned in sports, and the beautiful places I've had the privilege to visit.</p>
+  </div>
+</div>
+<script>
+  function toggleMenu() {
+    const menu = document.getElementById("overlayMenu");
+    menu.style.display = (menu.style.display === "block") ? "none" : "block";
+  }
+</script>
+
+  <nav class="social-icons">
+    <a href="#"><i class="fa fa-facebook"></i></a>
+    <a href="#"><i class="fa fa-twitter"></i></a>
+    <a href="#"><i class="fa fa-instagram"></i></a>
+    <a href="#"><i class="fa fa-search"></i></a>
+  </nav>
+</header>
+<div class="full-page">
+<h2 class="section-title"> Personal Writing</h2>
+<p class = "writings"> Ever since i was a kid, I were so excited to learn and experience new things. 
+  Here I'm showing you  the details of some of my Projects and some most beautiful moments in my Sports and Travels.I love playing Football,Volleyball and I have also made some achievements in Athletics too. Lets go through each of them,together
+ </p>
+<div class = "heading">
+  {% for head in main %}
+    {% if head.image %}
+      <img src ="{{ head.image.url }}" alt ="{{ head.heading}}">
+    {% endif %}
+    <h1>{{head.heading}}</h1>
+    <p>{{head.details}}</p>
+  {% endfor%}
+</div>
+
+<div class="container">
+  {% for box in boxes %}
+    <div class="box">
+      <h2>{{ box.title }}</h2>
+      <p>{{ box.description }}</p>
+      <div class="image-gallery">
+        {% for image in box.images.all %}
+        <div class="each">
+          <img  class="image_home"src="{{ image.image.url }}" alt="Image of {{ box.title }}">
+          {% if image.details %}
+            <p class="details-p">{{ image.details }}</p>
+      </div>
+          {% endif %}
+        {% endfor %}
+      </div>
+
+ {% if box.title == "My projects" %}
+        <a href="{% url 'projects' %}">Read More</a>
+      {% elif box.title == "Sports Achievements" %}
+        <a href="{% url 'sports' %}">Read More</a>
+      {% elif box.title == "Journeys I have taken" %}
+        <a href="{% url 'travel' %}">Read More</a>
+      {% endif %}
+    </div>
+  {% endfor %}
+</div>
+</div>
+
+
+
+<div class="contact-wrapper">
+  <h1>Contact Me</h1>
+  <a href="{% url 'contact' %}" class="send-button">Send</a>
+</div>
+
+<footer>
+  &copy; 2025 | Crafted with ❤️ by Fahad
+</footer>
+
+{% endblock %}

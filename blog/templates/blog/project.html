@@ -2,8 +2,8 @@
 {% load static %}
 
  <title>{% block title%}  
-    MY PROJECTS
-    {% endblock %} </title>
+My Projects  
+  {% endblock %} </title>
 
     {% block css_styles %} 
     <link rel="stylesheet" href="{% static 'blog/project.css' %}">
@@ -12,25 +12,41 @@
 
 
   {% block content%}
-    <a href="{% url 'starting-page' %}" class="home">Home</a>
 
-  <header>
-        <h1>My Projects</h1>
-        <p>Here are some of the projects I’ve worked on recently.</p>
-    </header>
+   <header class="hero">
+    <div class="hero-text">
+      <h1>Wt</h1>
+      <p>A Glimpse into My Work</p>
+    </div>
+  </header>
 
-    <section class="projects-grid">
-        <div class="project-card">
-            <h2>Salon App with Face Recognition</h2>
-            <p>An AI-powered app for online salon bookings using Flutter and Firebase.</p>
-        </div>
-        <div class="project-card">
-            <h2>Football Data Analysis</h2>
-            <p>Python-based football match insights with data visualization and predictive analysis.</p>
-        </div>
-        <div class="project-card">
-            <h2>Portfolio Website</h2>
-            <p>This personal blog made with Django, HTML, CSS, and Python.</p>
-        </div>
-    </section>
+  <section class="summary">
+    <p>This page presents a detailed view of my work, featuring visual examples and clear explanations to walk you through the journey and intent behind each part.</p>
+  </section>
+
+  <section class="content">
+    <div class="content-block">
+      <img src="{% static 'blog/images/img.jpg' %}" alt="Image 1">
+      <p>This image represents the starting point of the project where I brainstormed ideas and planned the roadmap for development.</p>
+    </div>
+
+    <div class="content-block">
+      <img src="{% static 'blog/images/img.jpg' %}" alt="Image 2">
+      <p>This section shows early-stage implementation where I built core functionalities and ensured proper backend logic.</p>
+    </div>
+
+    <div class="content-block">
+      <img src="{% static 'blog/images/img.jpg' %}" alt="Image 3">
+      <p>This phase highlights the testing and debugging process, ensuring the app performs well under different scenarios.</p>
+    </div>
+     <div class="content-block">
+      <img src="{% static 'blog/images/img.jpg' %}" alt="Image 4">
+      <p>Finally, the deployment and polishing stage where I focused on user experience, responsiveness, and design improvements.</p>
+    </div>
+  </section>
+
+  <footer class="thank-you">
+    <p>Thank you for visiting this page and taking the time to explore my work. I truly appreciate your interest!</p>
+    <p>Connect with me on Instagram: <a href="https://instagram.com/your_id" target="_blank">@your_id</a></p>
+  </footer>
 {%endblock%}

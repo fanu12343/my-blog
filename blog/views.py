@@ -1,16 +1,33 @@
 from django.shortcuts import render
-from django.http import HttpResponse
+from .models import Box, Description, ContactMessage
+from .forms import ContactForm
 
-# Create your views here.
-def starting_page(request):
-    return render(request,"blog/index.html")
+def home(request):
+    boxes = Box.objects.all()
+    main = Description.objects.all()
+    return render(request, 'blog/index.html', {'boxes': boxes, 'main': main})
 
-def projects_page(request):
-    return render(request,"blog/project.html")
+def sports(request):
+    return render(request, 'blog/sports.html')
 
+def travel(request):
+    return render(request, 'blog/travel.html')
 
-def sports_page(request):
-    return render(request,"blog/sports.html")
+def projects(request):
+    return render(request, 'blog/project.html')
 
-def travel_page(request):
-    return render(request,"blog/travel.html")
+def contact_view(request):
+    submitted = False
+    if request.method == 'POST':
+        form = ContactForm(request.POST)
+        if form.is_valid():
+            form.save()
+            submitted = True
+            form = ContactForm()  # Reset the form after saving
+    else:
+        form = ContactForm()
+
+    return render(request, 'blog/contact.html', {
+        'form': form,
+        'submitted': submitted
+    })
