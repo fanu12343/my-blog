@@ -1,67 +1,68 @@
-body {
-    margin: 0;
-    font-family: 'Segoe UI', sans-serif;
-    background-color: #111;
-    color: #fff;
-    padding: 20px;
+/* your_project/static/blog/sports.css */
+
+/* 1. HERO SECTION STYLING */
+.sports-hero {
+    padding: 6rem 0;
+    /* !!! IMPORTANT: Find a great sports-related image for this background !!! */
+    /* Name it 'sports-hero-bg.jpg' and place it in your 'static/blog/images/' folder */
+    background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('images/run.jpg') no-repeat center center;
+    background-size: cover;
+    background-attachment: fixed; /* Creates a cool parallax effect */
+}
+body{
+    background-color: black;
+}
+/* FIXED CSS for static/blog/index.css */
+
+/* In the HEADER & HERO SECTION part of your CSS */
+.hero-section .hero-title { /* <--- Added .hero-section */
+    font-size: 4rem;
+    font-weight: 700;
+    letter-spacing: 2px;
+    color: #fff; /* Explicitly set white color here */
 }
 
-header {
-    text-align: center;
-    margin-bottom: 40px;
+.hero-section .hero-subtitle { /* <--- Added .hero-section */
+    font-size: 1.5rem;
+    font-family: var(--font-body);
+    font-style: italic;
+    color: rgba(255, 255, 255, 0.85);
 }
 
-header h1 {
-    font-size: 2.5rem;
-    color: white;
+/* 2. ACHIEVEMENT SECTION STYLING */
+.achievement-section {
+    border-bottom: 1px solid #e9ecef;
+}
+.achievement-section:last-of-type {
+    border-bottom: none;
 }
 
-header p {
-    color: #bbb;
-    font-size: 1.1rem;
+.achievement-title {
+    font-family: var(--font-headings);
+    font-weight: 700;
+    color: var(--primary-color);
 }
 
-.projects-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-    gap: 20px;
-    padding: 0 10px;
+.achievement-meta {
+    font-family: var(--font-body);
+    font-style: italic;
+    color: #6c757d; /* Bootstrap's text-muted color */
+    margin-bottom: 1.5rem;
 }
 
-.project-card {
-    background-color: #1c1c1c;
-    border: 1px solid #333;
-    padding: 20px;
-    border-radius: 12px;
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-}
-
-.project-card:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 8px 20px rgba(255, 255, 255, 0.1);
-}
-
-.project-card h2 {
-    margin-top: 0;
-    color: #fff;
-}
-
-.project-card p {
-    color: #ccc;
-}
-.home{
-    
-    display: inline-block;
-    text-decoration: none;
+.bg-light-custom {
     background-color: #ffffff;
-    color: #000;
-    padding: 8px 16px;
-    border-radius: 6px;
-    font-weight: bold;
-    transition: background-color 0.3s ease;
+    padding-left: 1rem;
+    padding-right: 1rem;
+    border-radius: 0.5rem;
 }
 
-.home:hover {
-    background-color: #c0bbbb;
+/* 3. IMAGE & CAROUSEL STYLING */
+.carousel-inner, .carousel-item img, .img-fluid {
+    border-radius: 0.5rem; /* Soft rounded corners for all images */
 }
 
+.carousel-item img {
+    height: 450px;
+    object-fit: cover; /* Prevents images from being stretched or squashed */
+}

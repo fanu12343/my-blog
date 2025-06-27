@@ -1,55 +1,160 @@
+<!-- your_project/templates/blog/sports.html -->
+
 {% extends "base.html" %}
 {% load static %}
 
- <title>{% block title%}
-    Sports Achievements  
-   {% endblock %} </title>
+{% block title %}Sports Achievements | Fahad VB{% endblock %}
 
-    {% block css_styles %} 
-    <link rel="stylesheet" href="{% static 'blog/sports.css' %}">
-  {%endblock%}
+{% block css_styles %}
+<link rel="stylesheet" href="{% static 'blog/index.css' %}">
+<link rel="stylesheet" href="{% static 'blog/sports.css' %}">
+{% endblock %}
 
+{% block content %}
 
+<!-- Navbar -->
+<nav class="navbar navbar-expand-lg navbar-light bg-white sticky-top shadow-sm">
+  <div class="container">
+    <a class="navbar-brand" href="/">FAHAD VB</a>
+    <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+        <li class="nav-item"><a class="nav-link" href="/">Home</a></li>
+        <li class="nav-item"><a class="nav-link" href="{% url 'contact' %}">Contact</a></li>
+    </ul>
+  </div>
+</nav>
 
-
-
-  {% block content%}
-
-   <header class="hero">
-    <div class="hero-text">
-      <h1>Welcome to My Project</h1>
-      <p>A Glimpse into My Work</p>
+<!-- Sports Hero Section -->
+<header class="sports-hero text-center text-white d-flex align-items-center justify-content-center">
+    <div class="container">
+        <h1 class="hero-title">My Sporting Journey</h1>
+        <p class="hero-subtitle">Achievements on the Field and Track</p>
     </div>
-  </header>
+</header>
 
-  <section class="summary">
-    <p>This page presents a detailed view of my work, featuring visual examples and clear explanations to walk you through the journey and intent behind each part.</p>
-  </section>
+<main class="container my-5">
+    <!-- Achievement 1: KTU Football (This section was already correct) -->
+    <section class="achievement-section py-5">
+        <div class="row align-items-center g-5">
+            <div class="col-lg-6">
+                <div id="footballCarousel" class="carousel slide shadow-lg" data-bs-ride="carousel">
+                    <div class="carousel-indicators">
+                        <button type="button" data-bs-target="#footballCarousel" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+                        <button type="button" data-bs-target="#footballCarousel" data-bs-slide-to="1" aria-label="Slide 2"></button>
+                        <button type="button" data-bs-target="#footballCarousel" data-bs-slide-to="2" aria-label="Slide 3"></button>
+                    </div>
+                    <div class="carousel-inner">
+                        <div class="carousel-item active">
+                            <img src="{% static 'blog/images/university.jpg' %}" class="d-block w-100" alt="KTU Football Team">
+                        </div>
+                        <div class="carousel-item">
+                            <img src="{% static 'blog/images/groupuniversity.jpeg' %}" class="d-block w-100" alt="Football match action">
+                        </div>
+                        <div class="carousel-item">
+                            <img src="{% static 'blog/images/football.jpg' %}" class="d-block w-100" alt="Team photo after a match">
+                        </div>
+                    </div>
+                    <button class="carousel-control-prev" type="button" data-bs-target="#footballCarousel" data-bs-slide="prev">
+                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                        <span class="visually-hidden">Previous</span>
+                    </button>
+                    <button class="carousel-control-next" type="button" data-bs-target="#footballCarousel" data-bs-slide="next">
+                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                        <span class="visually-hidden">Next</span>
+                    </button>
+                </div>
+            </div>
+            <div class="col-lg-6">
+                <h2 class="achievement-title">KTU University Football Team</h2>
+                <p class="achievement-meta">2023-24 | SRM University, Chennai</p>
+                <p>I was proud to represent the Kerala Technical University (KTU) as a member of the official football team. Playing in the demanding position of Right Wing-Back, I was responsible for both defensive solidity and contributing to our forward attacks. The experience culminated in our participation in a prestigious tournament at SRM University, Chennai, which was a true test of our skill, teamwork, and resilience.
+</p>
+            </div>
+        </div>
+    </section>
 
-  <section class="content">
-    <div class="content-block">
-      <img src="{% static 'blog/images/img.jpg' %}" alt="Image 1">
-      <p>This image represents the starting point of the project where I brainstormed ideas and planned the roadmap for development.</p>
+    <!-- Achievement 2: Athletics Champion (MODIFIED SECTION) -->
+    <section class="achievement-section py-5 bg-light-custom">
+        <div class="row align-items-center g-5">
+            <div class="col-lg-6 order-lg-2">
+                <!-- Bootstrap Carousel for Athletics Images -->
+                <div id="athleticsCarousel" class="carousel slide shadow-lg" data-bs-ride="carousel">
+                    <div class="carousel-indicators">
+                        <button type="button" data-bs-target="#athleticsCarousel" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+                        <button type="button" data-bs-target="#athleticsCarousel" data-bs-slide-to="1" aria-label="Slide 2"></button>
+                        <button type="button" data-bs-target="#athleticsCarousel" data-bs-slide-to="2" aria-label="Slide 3"></button>
+                    </div>
+                    <div class="carousel-inner">
+                        <div class="carousel-item active">
+                            <img src="{% static 'blog/images/running.jpeg' %}" class="d-block w-100" alt="Receiving athletics trophy">
+                        </div>
+                        
+                    </div>
+                    <button class="carousel-control-prev" type="button" data-bs-target="#athleticsCarousel" data-bs-slide="prev">
+                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                        <span class="visually-hidden">Previous</span>
+                    </button>
+                    <button class="carousel-control-next" type="button" data-bs-target="#athleticsCarousel" data-bs-slide="next">
+                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                        <span class="visually-hidden">Next</span>
+                    </button>
+                </div>
+            </div>
+            <div class="col-lg-6 order-lg-1">
+                <h2 class="achievement-title">3x College Athletics Champion</h2>
+                <p class="achievement-meta">Thejus Engineering College</p>
+                <p>Athletics has always been a core part of my identity. During my time at Thejus Engineering College, I was honored to be named the Individual Athletics Champion for three consecutive years. My success was built on versatility, competing and excelling in the demanding middle-distance 1500m and 800m races, as well as the precision-based High Jump event. This achievement reflects my dedication and passion for all-around athleticism.
+</p>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Achievement 3: Volleyball Champions (MODIFIED SECTION) -->
+    <section class="achievement-section py-5">
+        <div class="row align-items-center g-5">
+            <div class="col-lg-6">
+                 <!-- Bootstrap Carousel for Volleyball Images -->
+                <div id="volleyballCarousel" class="carousel slide shadow-lg" data-bs-ride="carousel">
+                    <div class="carousel-indicators">
+                        <button type="button" data-bs-target="#volleyballCarousel" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+                        <button type="button" data-bs-target="#volleyballCarousel" data-bs-slide-to="1" aria-label="Slide 2"></button>
+                        <button type="button" data-bs-target="#volleyballCarousel" data-bs-slide-to="2" aria-label="Slide 3"></button>
+                    </div>
+                    <div class="carousel-inner">
+                        <div class="carousel-item active">
+                            <img src="{% static 'blog/images/withcup.jpg' %}" class="d-block w-100" alt="E-Zone Volleyball Champions">
+                        </div>
+                        <div class="carousel-item">
+                            <img src="{% static 'blog/images/running.JPG' %}" class="d-block w-100" alt="Volleyball team group photo">
+                        </div>
+                        <div class="carousel-item">
+                            <img src="{% static 'blog/images/team.jpg' %}" class="d-block w-100" alt="Volleyball team group photo">
+                        </div>
+                    </div>
+                    <button class="carousel-control-prev" type="button" data-bs-target="#volleyballCarousel" data-bs-slide="prev">
+                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                        <span class="visually-hidden">Previous</span>
+                    </button>
+                    <button class="carousel-control-next" type="button" data-bs-target="#volleyballCarousel" data-bs-slide="next">
+                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                        <span class="visually-hidden">Next</span>
+                    </button>
+                </div>
+            </div>
+            <div class="col-lg-6">
+                <h2 class="achievement-title">E-Zone Volleyball Champions</h2>
+                <p class="achievement-meta">First Place Victory</p>
+                <p>As a dedicated member of our college team, we successfully clinched the title of E-Zone Volleyball Champions. The tournament, hosted at Sreepathy Engineering College, was a showcase of our team's strategy and coordination. This victory earned us the prestigious opportunity to advance and compete in the Inter-Zone Volleyball Championship, representing our zone against top-tier opponents.
+]</p>
+            </div>
+        </div>
+    </section>
+</main>
+
+<!-- Footer -->
+<footer class="text-center py-4 bg-white mt-5">
+    <div class="container">
+        <p class="mb-0 text-muted">© {% now "Y" %} | Crafted with ❤️ by Fahad VB</p>
     </div>
+</footer>
 
-    <div class="content-block">
-      <img src="{% static 'blog/images/img.jpg' %}" alt="Image 2">
-      <p>This section shows early-stage implementation where I built core functionalities and ensured proper backend logic.</p>
-    </div>
-
-    <div class="content-block">
-      <img src="{% static 'blog/images/img.jpg' %}" alt="Image 3">
-      <p>This phase highlights the testing and debugging process, ensuring the app performs well under different scenarios.</p>
-    </div>
-     <div class="content-block">
-      <img src="{% static 'blog/images/img.jpg' %}" alt="Image 4">
-      <p>Finally, the deployment and polishing stage where I focused on user experience, responsiveness, and design improvements.</p>
-    </div>
-  </section>
-
-  <footer class="thank-you">
-    <p>Thank you for visiting this page and taking the time to explore my work. I truly appreciate your interest!</p>
-    <p>Connect with me on Instagram: <a href="https://instagram.com/your_id" target="_blank">@your_id</a></p>
-  </footer>
-{%endblock%}
-        
+{% endblock %}

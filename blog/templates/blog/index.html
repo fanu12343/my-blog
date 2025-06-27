@@ -1,3 +1,5 @@
+<!-- your_project/templates/blog/index.html -->
+
 {% extends "base.html" %}
 {% load static %}
 
@@ -9,93 +11,108 @@
 
 {% block content %}
 
-
-<header class="site-header">
-  <div class="logo">
-    <h1 class="heading">FAHAD VB</h1>
-    <p class="subheading">FANU</p>
-    <div class='underline'></div>
+<!-- Offcanvas "About Me" Menu -->
+<div class="offcanvas offcanvas-start" tabindex="-1" id="aboutMeMenu" aria-labelledby="aboutMeMenuLabel">
+  <div class="offcanvas-header">
+    <h5 class="offcanvas-title" id="aboutMeMenuLabel">About Me</h5>
+    <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
   </div>
-  <!-- Hamburger icon -->
-<div class="hamburger" onclick="toggleMenu()">
-  ☰
-</div>
-
-<!-- Overlay menu -->
-<div id="overlayMenu" class="overlay">
-  <div class="overlay-content">
-    <span class="close-btn" onclick="toggleMenu()">&times;</span>
-        <img class="head" src="static/blog/images/myPhoto.jpeg" alt="My photo">
-
-    <p>Hi, I'm Fahad — a recent B.Tech graduate in Computer Science Engineering from Thejus Engineering College. I'm excited to share a glimpse of my journey, including some of the projects I've built, the achievements I've earned in sports, and the beautiful places I've had the privilege to visit.</p>
-  </div>
-</div>
-<script>
-  function toggleMenu() {
-    const menu = document.getElementById("overlayMenu");
-    menu.style.display = (menu.style.display === "block") ? "none" : "block";
-  }
-</script>
-
-  <nav class="social-icons">
-    <a href="#"><i class="fa fa-facebook"></i></a>
-    <a href="#"><i class="fa fa-twitter"></i></a>
-    <a href="#"><i class="fa fa-instagram"></i></a>
-    <a href="#"><i class="fa fa-search"></i></a>
-  </nav>
-</header>
-<div class="full-page">
-<h2 class="section-title"> Personal Writing</h2>
-<p class = "writings"> Ever since i was a kid, I were so excited to learn and experience new things. 
-  Here I'm showing you  the details of some of my Projects and some most beautiful moments in my Sports and Travels.I love playing Football,Volleyball and I have also made some achievements in Athletics too. Lets go through each of them,together
- </p>
-<div class = "heading">
-  {% for head in main %}
-    {% if head.image %}
-      <img src ="{{ head.image.url }}" alt ="{{ head.heading}}">
-    {% endif %}
-    <h1>{{head.heading}}</h1>
-    <p>{{head.details}}</p>
-  {% endfor%}
-</div>
-
-<div class="container">
-  {% for box in boxes %}
-    <div class="box">
-      <h2>{{ box.title }}</h2>
-      <p>{{ box.description }}</p>
-      <div class="image-gallery">
-        {% for image in box.images.all %}
-        <div class="each">
-          <img  class="image_home"src="{{ image.image.url }}" alt="Image of {{ box.title }}">
-          {% if image.details %}
-            <p class="details-p">{{ image.details }}</p>
-      </div>
-          {% endif %}
-        {% endfor %}
-      </div>
-
- {% if box.title == "My projects" %}
-        <a href="{% url 'projects' %}">Read More</a>
-      {% elif box.title == "Sports Achievements" %}
-        <a href="{% url 'sports' %}">Read More</a>
-      {% elif box.title == "Journeys I have taken" %}
-        <a href="{% url 'travel' %}">Read More</a>
-      {% endif %}
+  <div class="offcanvas-body text-center">
+    <img class="about-me-photo" src="{% static 'blog/images/myPhoto.jpeg' %}" alt="Photo of Fahad VB">
+    <h4 class="mt-3">Fahad VB</h4>
+    <p class="text-muted">B.Tech, Computer Science</p>
+    <hr>
+    <p class="text-start">
+        Hi, I'm Fahad — a recent B.Tech graduate in Computer Science Engineering from Thejus Engineering College. I'm excited to share a glimpse of my journey, including some of the projects I've built, the achievements I've earned in sports, and the beautiful places I've had the privilege to visit.
+    </p>
+    <div class="social-icons-offcanvas mt-4">
+        <a href="#" class="social-icon" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+        <a href="#" class="social-icon" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+        <a href="#" class="social-icon" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+        <a href="#" class="social-icon" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
     </div>
-  {% endfor %}
-</div>
-</div>
-
-
-
-<div class="contact-wrapper">
-  <h1>Contact Me</h1>
-  <a href="{% url 'contact' %}" class="send-button">Send</a>
+  </div>
 </div>
 
-<footer>
-  &copy; 2025 | Crafted with ❤️ by Fahad
+<!-- Main Header/Navbar -->
+<nav class="navbar navbar-expand-lg navbar-light bg-white sticky-top shadow-sm">
+  <div class="container">
+    <a class="navbar-brand" href="/">FAHAD VB</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#aboutMeMenu" aria-controls="aboutMeMenu">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse">
+      <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+        <li class="nav-item"><a class="nav-link" href="#writing">Writings</a></li>
+        <li class="nav-item"><a class="nav-link" href="#contact">Contact</a></li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<!-- Hero Section -->
+<header class="hero-section text-center text-white d-flex align-items-center justify-content-center">
+    <div class="container">
+        <h1 class="hero-title">FAHAD VB</h1>
+        <p class="hero-subtitle">Engineer. Athlete. Explorer.</p>
+    </div>
+</header>
+
+<main class="container my-5">
+    <!-- Intro Section -->
+    <section id="writing" class="text-center mb-5">
+        <h2 class="section-title">Personal Writing</h2>
+        <div class="underline"></div>
+        <p class="lead text-muted mt-3 mx-auto" style="max-width: 700px;">
+            Ever since I was a kid, I've been excited to learn and experience new things. Here I'm showing you the details of some of my projects and the most beautiful moments in my sports and travel careers. Let's go through each of them, together.
+        </p>
+    </section>
+
+    <!-- Cards Section -->
+    <div class="row g-4">
+      {% for box in boxes %}
+        <div class="col-lg-4 col-md-6 d-flex align-items-stretch">
+            <div class="card h-100 shadow-sm card-hover">
+                <!-- We display the first image of the gallery as the card's main image -->
+                {% with box.images.all|first as first_image %}
+                    {% if first_image %}
+                        <img src="{{ first_image.image.url }}" class="card-img-top" alt="{{ box.title }}">
+                    {% endif %}
+                {% endwith %}
+
+                <div class="card-body d-flex flex-column">
+                    <h3 class="card-title">{{ box.title }}</h3>
+                    <p class="card-text text-muted flex-grow-1">{{ box.description }}</p>
+                    
+                    <!-- This determines the correct URL for the "Read More" button -->
+                    {% if box.title == "My projects" %}
+                        <a href="{% url 'projects' %}" class="btn btn-primary mt-auto">View Projects</a>
+                    {% elif box.title == "Sports Achievements" %}
+                        <a href="{% url 'sports' %}" class="btn btn-primary mt-auto">See Achievements</a>
+                    {% elif box.title == "Journeys I have taken" %}
+                        <a href="{% url 'travel' %}" class="btn btn-primary mt-auto">Explore Journeys</a>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+      {% endfor %}
+    </div>
+</main>
+
+<!-- Contact CTA Section -->
+<section id="contact" class="contact-cta bg-white py-5">
+    <div class="container text-center">
+        <h2 class="section-title">Get In Touch</h2>
+        <p class="lead text-muted my-3">Have a question or want to work together?</p>
+        <a href="{% url 'contact' %}" class="btn btn-primary btn-lg">Contact Me</a>
+    </div>
+</section>
+
+<!-- Footer -->
+<footer class="text-center py-4">
+    <div class="container">
+        <p class="mb-0 text-muted">© {% now "Y" %} | Crafted with ❤️ by Fahad VB</p>
+    </div>
 </footer>
 
 {% endblock %}

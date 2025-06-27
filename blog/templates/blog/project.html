@@ -1,52 +1,108 @@
 {% extends "base.html" %}
 {% load static %}
 
- <title>{% block title%}  
-My Projects  
-  {% endblock %} </title>
+{% block title %}My Projects | Fahad VB{% endblock %}
 
-    {% block css_styles %} 
-    <link rel="stylesheet" href="{% static 'blog/project.css' %}">
-  {%endblock%}
+{% block css_styles %}
+{# Link to your global stylesheet if you have one #}
+<link rel="stylesheet" href="{% static 'blog/index.css' %}"> 
+{# Link to the new, specific stylesheet for this page #}
+<link rel="stylesheet" href="{% static 'blog/projects.css' %}">
+{% endblock %}
 
+{% block content %}
 
-
-  {% block content%}
-
-   <header class="hero">
-    <div class="hero-text">
-      <h1>Wt</h1>
-      <p>A Glimpse into My Work</p>
+<!-- Navbar (Same as your other pages for consistency) -->
+<nav class="navbar navbar-expand-lg navbar-light bg-white sticky-top shadow-sm">
+  <div class="container">
+    <a class="navbar-brand" href="/">FAHAD VB</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+            <li class="nav-item"><a class="nav-link" href="/">Home</a></li>
+            {# Add a link to your new projects page if you want #}
+            <li class="nav-item"><a class="nav-link active" aria-current="page" href="{% url 'projects' %}">Projects</a></li> 
+            <li class="nav-item"><a class="nav-link" href="{% url 'contact' %}">Contact</a></li>
+        </ul>
     </div>
-  </header>
+  </div>
+</nav>
 
-  <section class="summary">
-    <p>This page presents a detailed view of my work, featuring visual examples and clear explanations to walk you through the journey and intent behind each part.</p>
-  </section>
-
-  <section class="content">
-    <div class="content-block">
-      <img src="{% static 'blog/images/img.jpg' %}" alt="Image 1">
-      <p>This image represents the starting point of the project where I brainstormed ideas and planned the roadmap for development.</p>
+<!-- Projects Hero Section (THIS LINE IS MODIFIED) -->
+<!-- The "text-white" class has been removed to make the text visible -->
+<header class="projects-hero text-center d-flex align-items-center justify-content-center">
+    <div class="container">
+        <h1 class="hero-title">My Projects
+        A Showcase of My Development Work & Creations</h1>
     </div>
+</header>
 
-    <div class="content-block">
-      <img src="{% static 'blog/images/img.jpg' %}" alt="Image 2">
-      <p>This section shows early-stage implementation where I built core functionalities and ensured proper backend logic.</p>
-    </div>
+<main class="container my-5">
 
-    <div class="content-block">
-      <img src="{% static 'blog/images/img.jpg' %}" alt="Image 3">
-      <p>This phase highlights the testing and debugging process, ensuring the app performs well under different scenarios.</p>
-    </div>
-     <div class="content-block">
-      <img src="{% static 'blog/images/img.jpg' %}" alt="Image 4">
-      <p>Finally, the deployment and polishing stage where I focused on user experience, responsiveness, and design improvements.</p>
-    </div>
-  </section>
+    <!-- Project 1: Personal Blog -->
+    <section class="project-card py-5">
+        <div class="row align-items-center g-5">
+            <div class="col-lg-6">
+                <img src="{% static 'blog/images/blog.png' %}" class="img-fluid rounded shadow-lg project-image" alt="Personal Blog Screenshot">
+            </div>
+            <div class="col-lg-6">
+                <h2 class="project-title">Personal Portfolio & Blog</h2>
+                <div class="tech-stack my-3">
+                    <span class="tech-badge django">Django</span>
+                    <span class="tech-badge python">Python</span>
+                    <span class="tech-badge html-css">HTML/CSS</span>
+                </div>
+                <p>A comprehensive personal website built with Django to serve as a central hub for my digital presence. It features sections for my professional projects, sports achievements, and travel blogs, demonstrating full-stack web development capabilities.</p>
+                <a href= "/" class="btn btn-primary me-2">View Live</a>
+            </div>
+        </div>
+    </section>
 
-  <footer class="thank-you">
-    <p>Thank you for visiting this page and taking the time to explore my work. I truly appreciate your interest!</p>
-    <p>Connect with me on Instagram: <a href="https://instagram.com/your_id" target="_blank">@your_id</a></p>
-  </footer>
-{%endblock%}
+    <!-- Project 2: YouTube Clone -->
+    <section class="project-card py-5 bg-light-custom">
+        <div class="row align-items-center g-5">
+            <div class="col-lg-6 order-lg-2">
+                <img src="{% static 'blog/images/youtube.png' %}" class="img-fluid rounded shadow-lg project-image" alt="YouTube Clone Screenshot">
+            </div>
+            <div class="col-lg-6 order-lg-1">
+                <h2 class="project-title">YouTube Clone</h2>
+                <div class="tech-stack my-3">
+                    <span class="tech-badge html-css">HTML5</span>
+                    <span class="tech-badge html-css">CSS3</span>
+                    <span class="tech-badge js">JavaScript</span>
+                </div>
+                <p>A front-end project focused on meticulously replicating the user interface of YouTube. This project hones skills in semantic HTML and advanced CSS, including Flexbox and Grid, to create a responsive and visually accurate clone of a complex, real-world application.</p>
+                <a href="https://github.com/fanu12343/Youtube-Clone" class="btn btn-outline-secondary">View on GitHub</a>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Project 3: Online Saloon Reservation App -->
+    <section class="project-card py-5">
+        <div class="row align-items-center g-5">
+            <div class="col-lg-6">
+                 <img src="{% static 'blog/images/project_saloon.jpg' %}" class="img-fluid rounded shadow-lg project-image" alt="Saloon App Screenshot">
+            </div>
+            <div class="col-lg-6">
+                <h2 class="project-title">Online Saloon Reservation App</h2>
+                 <div class="tech-stack my-3">
+                    <span class="tech-badge flutter">Flutter</span>
+                    <span class="tech-badge firebase">Firebase</span>
+                    <span class="tech-badge firebase">Firestore</span>
+                </div>
+                <p>A cross-platform mobile application for booking salon appointments, built using Flutter for the front-end and Firebase for the backend. The app features user authentication, a real-time booking system with Firebase Firestore, and a clean, intuitive user interface.</p>
+            </div>
+        </div>
+    </section>
+</main>
+
+<!-- Footer -->
+<footer class="text-center py-4 bg-white mt-5">
+    <div class="container">
+        <p class="mb-0 text-muted">© {% now "Y" %} | Crafted with ❤️ by Fahad VB</p>
+    </div>
+</footer>
+
+{% endblock %}

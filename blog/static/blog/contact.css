@@ -1,23 +1,119 @@
-.site-header {
-  text-align: center;
-  padding: 2rem 1rem;
-  font-family: 'garamond-premier-pro-display';
-  position: sticky;
-  top: 0;
-  width: 100%;
-  background-color: rgb(241, 241, 241); 
-  z-index: 1000;
-  padding: 20px 0;
-  box-shadow: 0 2px 5px rgba(0,0,0,0.1); 
+/* --- Main Contact Section Styling --- */
+.contact-section {
+    background-color: #f8f9fa; /* Light gray background */
 }
 
-.heading{
-  font-weight: 400;
+.section-title {
+    font-weight: 700;
+    color: #343a40;
 }
 
-.underline {
-  width: 100px;
-  height: 2px;
-  background-color: black;
-  margin: 10px auto 0 auto;
+.contact-wrapper {
+    background-color: #ffffff;
+    border-radius: 15px;
+    overflow: hidden; /* Important for keeping child corners rounded */
+}
+
+/* --- Left Panel: Contact Info --- */
+.contact-info-panel {
+    background-color: #0d6efd; /* Bootstrap primary blue */
+    color: #ffffff;
+    padding: 40px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.info-title {
+    font-weight: 600;
+    margin-bottom: 15px;
+}
+
+.info-text {
+    line-height: 1.6;
+    color: rgba(255, 255, 255, 0.85);
+}
+
+.info-item {
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.info-item i {
+    font-size: 20px;
+    width: 30px; /* Aligns text neatly */
+    color: rgba(255, 255, 255, 0.8);
+}
+
+.info-item a,
+.info-item span {
+    color: #ffffff;
+    text-decoration: none;
+    font-weight: 500;
+    transition: opacity 0.3s ease;
+}
+
+.info-item a:hover {
+    opacity: 0.8;
+}
+
+.social-links .social-icon {
+    color: #fff;
+    font-size: 24px;
+    margin-right: 20px;
+    transition: transform 0.3s ease;
+}
+
+.social-links .social-icon:hover {
+    transform: scale(1.2);
+}
+
+
+/* --- Right Panel: Contact Form --- */
+.contact-form-panel {
+    padding: 40px;
+}
+
+/* Style for the form labels and inputs */
+.contact-form-panel label {
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+    color: #495057;
+}
+
+.form-control {
+    border-radius: 8px;
+    padding: 12px 15px;
+    border: 1px solid #ced4da;
+    transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.form-control:focus {
+    border-color: #0d6efd;
+    box-shadow: 0 0 0 0.25rem rgba(13, 110, 253, 0.25);
+}
+
+.send-button {
+    background-color: #0d6efd;
+    border: none;
+    padding: 15px;
+    font-weight: 600;
+    border-radius: 8px;
+    transition: background-color 0.3s ease;
+}
+
+.send-button:hover {
+    background-color: #0b5ed7; /* Darker blue on hover */
+}
+
+/* --- Responsive Adjustments --- */
+@media (max-width: 991.98px) {
+    .contact-info-panel {
+        border-radius: 15px 15px 0 0;
+    }
+
+    .contact-form-panel {
+        border-radius: 0 0 15px 15px;
+    }
 }

@@ -1,52 +1,161 @@
 {% extends "base.html" %}
 {% load static %}
 
- <title>{% block title%}  
-Journeys I have taken
-    {% endblock %} </title>
+{% block title %}My India Travels | Fahad VB{% endblock %}
 
-    {% block css_styles %} 
-    <link rel="stylesheet" href="{% static 'blog/travel.css' %}">
-  {%endblock%}
+{% block css_styles %}
+{# Assumes index.css has your base styles, fonts, etc. #}
+<link rel="stylesheet" href="{% static 'blog/index.css' %}"> 
+<link rel="stylesheet" href="{% static 'blog/travel.css' %}">
+{% endblock %}
 
+{% block content %}
 
+<!-- Navbar (Assuming this is part of your base.html, but included to match your example) -->
+<nav class="navbar navbar-expand-lg navbar-light bg-white sticky-top shadow-sm">
+  <div class="container">
+    <a class="navbar-brand" href="/">FAHAD VB</a>
+    <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+        <li class="nav-item"><a class="nav-link" href="/">Home</a></li>
+        <li class="nav-item"><a class="nav-link" href="{% url 'contact' %}">Contact</a></li>
+    </ul>
+  </div>
+</nav>
 
-  {% block content%}
-
-   <header class="hero">
-    <div class="hero-text">
-      <h1>Wt</h1>
-      <p>A Glimpse into My Work</p>
+<!-- Travel Hero Section -->
+<header class="travel-hero text-center text-white d-flex align-items-center justify-content-center">
+    <div class="container">
+        <h1 class="hero-title">Incredible India Travels</h1>
+        <p class="hero-subtitle">A journey through culture, beauty, and spirituality</p>
     </div>
-  </header>
+</header>
 
-  <section class="summary">
-    <p>This page presents a detailed view of my work, featuring visual examples and clear explanations to walk you through the journey and intent behind each part.</p>
-  </section>
+<main class="container my-5">
+    <!-- Travel Destination 1: Kashmir -->
+    <section class="destination-section py-5">
+        <div class="row align-items-center g-5">
+            <div class="col-lg-6">
+                <div id="kashmirCarousel" class="carousel slide shadow-lg" data-bs-ride="carousel">
+                    <div class="carousel-indicators">
+                        <button type="button" data-bs-target="#kashmirCarousel" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+                        <button type="button" data-bs-target="#kashmirCarousel" data-bs-slide-to="1" aria-label="Slide 2"></button>
+                        <button type="button" data-bs-target="#kashmirCarousel" data-bs-slide-to="2" aria-label="Slide 3"></button>
+                    </div>
+                    <div class="carousel-inner rounded">
+                        <div class="carousel-item active">
+                            <img src="{% static 'blog/images/selfie.jpg' %}" class="d-block w-100" alt="Snowfall in Kashmir">
+                        </div>
+                        <div class="carousel-item">
+                            <img src="{% static 'blog/images/IMG_1463.jpg' %}" class="d-block w-100" alt="Dal Lake in Srinagar">
+                        </div>
+                        <div class="carousel-item">
+                            <img src="{% static 'blog/images/snow.jpg' %}" class="d-block w-100" alt="Pahalgam Valley in winter">
+                        </div>
+                    </div>
+                    <button class="carousel-control-prev" type="button" data-bs-target="#kashmirCarousel" data-bs-slide="prev">
+                        <span class="carousel-control-prev-icon" aria-hidden="true"></span><span class="visually-hidden">Previous</span>
+                    </button>
+                    <button class="carousel-control-next" type="button" data-bs-target="#kashmirCarousel" data-bs-slide="next">
+                        <span class="carousel-control-next-icon" aria-hidden="true"></span><span class="visually-hidden">Next</span>
+                    </button>
+                </div>
+            </div>
+            <div class="col-lg-6">
+                <h2 class="destination-title">Kashmir: Heaven on Earth</h2>
+                <p class="destination-meta">Jammu & Kashmir | The Crown of India</p>
+                <p>Nestled in the Himalayas, Kashmir is a place of breathtaking natural beauty. Its serene lakes, lush valleys, and majestic snow-capped peaks create a landscape that feels like a painting come to life. In winter, the entire valley is draped in a pristine white blanket of snow, and the sight of snowflakes gently falling is a truly magical experience.</p>
+            </div>
+        </div>
+    </section>
 
-  <section class="content">
-    <div class="content-block">
-      <img src="{% static 'blog/images/img.jpg' %}" alt="Image 1">
-      <p>This image represents the starting point of the project where I brainstormed ideas and planned the roadmap for development.</p>
+    <!-- Travel Destination 2: Golden Temple -->
+    <section class="destination-section py-5 bg-light-custom">
+        <div class="row align-items-center g-5">
+            <div class="col-lg-6 order-lg-2">
+                <div id="punjabCarousel" class="carousel slide shadow-lg" data-bs-ride="carousel">
+                    <div class="carousel-indicators">
+                        <button type="button" data-bs-target="#punjabCarousel" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+                        <button type="button" data-bs-target="#punjabCarousel" data-bs-slide-to="1" aria-label="Slide 2"></button>
+                    </div>
+                    <div class="carousel-inner rounded">
+                        <div class="carousel-item active">
+                            <img src="{% static 'blog/images/golden.webp' %}" class="d-block w-100" alt="The Golden Temple at night">
+                        </div>
+                        <div class="carousel-item">
+                            <img src="{% static 'blog/images/gt.avif' %}" class="d-block w-100" alt="Daytime view of the Golden Temple">
+                        </div>
+                    </div>
+                    <button class="carousel-control-prev" type="button" data-bs-target="#punjabCarousel" data-bs-slide="prev">
+                        <span class="carousel-control-prev-icon" aria-hidden="true"></span><span class="visually-hidden">Previous</span>
+                    </button>
+                    <button class="carousel-control-next" type="button" data-bs-target="#punjabCarousel" data-bs-slide="next">
+                        <span class="carousel-control-next-icon" aria-hidden="true"></span><span class="visually-hidden">Next</span>
+                    </button>
+                </div>
+            </div>
+            <div class="col-lg-6 order-lg-1">
+                <h2 class="destination-title">Punjab: The Golden Temple's Glow</h2>
+                <p class="destination-meta">Amritsar, Punjab | A Symbol of Equality</p>
+                <p>The Golden Temple, or Sri Harmandir Sahib, is the spiritual heart of Sikhism. Its stunning golden dome shimmers in the sacred waters that surround it. The atmosphere is one of profound peace and devotion, and the community kitchen (Langar) serves free meals to thousands daily, embodying the spirit of selfless service.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Travel Destination 3: Taj Mahal -->
+    <section class="destination-section py-5">
+        <div class="row align-items-center g-5">
+            <div class="col-lg-6">
+                <div id="tajMahalCarousel" class="carousel slide shadow-lg" data-bs-ride="carousel">
+                    <div class="carousel-indicators">
+                        <button type="button" data-bs-target="#tajMahalCarousel" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+                        <button type="button" data-bs-target="#tajMahalCarousel" data-bs-slide-to="1" aria-label="Slide 2"></button>
+                    </div>
+                    <div class="carousel-inner rounded">
+                        <div class="carousel-item active">
+                            <img src="{% static 'blog/images/Taj.jpeg' %}" class="d-block w-100" alt="Classic view of the Taj Mahal">
+                        </div>
+                        <div class="carousel-item">
+                            <img src="{% static 'blog/images/Tajmahal.webp' %}" class="d-block w-100" alt="Intricate marble details">
+                        </div>
+                        
+                    </div>
+                     <button class="carousel-control-prev" type="button" data-bs-target="#tajMahalCarousel" data-bs-slide="prev">
+                        <span class="carousel-control-prev-icon" aria-hidden="true"></span><span class="visually-hidden">Previous</span>
+                    </button>
+                    <button class="carousel-control-next" type="button" data-bs-target="#tajMahalCarousel" data-bs-slide="next">
+                        <span class="carousel-control-next-icon" aria-hidden="true"></span><span class="visually-hidden">Next</span>
+                    </button>
+                </div>
+            </div>
+            <div class="col-lg-6">
+                <h2 class="destination-title">Agra: The Timeless Taj Mahal</h2>
+                <p class="destination-meta">Agra, Uttar Pradesh | An Enduring Symbol of Love</p>
+                <p>The Taj Mahal is not just a monument; it's a poem written in marble. This ivory-white mausoleum is an enduring symbol of love. Its perfect symmetry, intricate carvings, and inlaid precious stones are a marvel of architecture, changing color with the shifting light of the day.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Travel Destination 4: Kerala -->
+    <section class="destination-section py-5 bg-light-custom">
+        <div class="row align-items-center g-5">
+            <div class="col-lg-6 order-lg-2">
+                <!-- Single image can still be in a shadow box to match the look -->
+                <img src="{% static 'blog/images/kerala.png' %}" class="d-block w-100 rounded shadow-lg" alt="Kerala backwaters houseboat">
+                
+            </div>
+            <div class="col-lg-6 order-lg-1">
+                <h2 class="destination-title">Kerala: God's Own Country</h2>
+                <p class="destination-meta">Southern India | Tropical Paradise</p>
+<p>The mountains of Kerala, nestled in the Western Ghats, are a breathtaking blend of lush greenery, misty peaks, and cascading waterfalls. Covered with tea plantations, spice gardens, and dense forests, these hills offer serene landscapes and cool, refreshing air. Places like Munnar, Wayanad, and Ponmudi captivate with their natural charm, rich biodiversity, and stunning sunrise views, making Kerala's mountains a true haven for nature lovers and peace seekers</p>            </div>
+        </div>
+    </section>
+</main>
+
+<!-- Footer -->
+<footer class="text-center py-4 bg-white mt-5">
+    <div class="container">
+        <p class="mb-0 text-muted">© {% now "Y" %} | Crafted with ❤️ by Fahad VB</p>
     </div>
+</footer>
 
-    <div class="content-block">
-      <img src="{% static 'blog/images/img.jpg' %}" alt="Image 2">
-      <p>This section shows early-stage implementation where I built core functionalities and ensured proper backend logic.</p>
-    </div>
-
-    <div class="content-block">
-      <img src="{% static 'blog/images/img.jpg' %}" alt="Image 3">
-      <p>This phase highlights the testing and debugging process, ensuring the app performs well under different scenarios.</p>
-    </div>
-     <div class="content-block">
-      <img src="{% static 'blog/images/img.jpg' %}" alt="Image 4">
-      <p>Finally, the deployment and polishing stage where I focused on user experience, responsiveness, and design improvements.</p>
-    </div>
-  </section>
-
-  <footer class="thank-you">
-    <p>Thank you for visiting this page and taking the time to explore my work. I truly appreciate your interest!</p>
-    <p>Connect with me on Instagram: <a href="https://instagram.com/your_id" target="_blank">@your_id</a></p>
-  </footer>
-{%endblock%}
+{% endblock %}
